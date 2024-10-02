@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Watchlist</title>
+    <link
+        href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet"
+    />
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+    <div class="container">
+        <h3 class="center-align">Movie Watchlist</h3>
+        <!-- Movie name input -->
+        <div class="input-field">
+            <input
+                id="movie-name"
+                type="text"
+                class="validate"
+                placeholder="Enter movie title"
+            />
+        </div>
+        <!-- Category input -->
+        <div class="input-field">
+            <select id="movie-category">
+                <option value="" disabled selected>Select Category</option>
+                <option value="Action">Action</option>
+                <option value="Comedy">Comedy</option>
+                <option value="Drama">Drama</option>
+            </select>
+            <label>Select Category</label> 
+        </div>
+        <!-- Movie rating input -->
+        <div class="input-field">
+            <input
+                id="movie-rating"
+                type="number"
+                min="1"
+                max="10"
+                class="validate"
+                placeholder="Enter movie rating (1-10)"
+            />
+        </div>
+        <!-- Movie release date input -->
+        <div class="input-field">
+            <input
+                id="movie-release-date"
+                type="date"
+                class="validate"
+            />
+        </div>
+
+        <button
+            id="add-movie-btn"
+            class="btn waves-effect waves-light"
+            type="button" 
+            onclick="addmovie()"
+        >
+            Add Movie
+        </button>
+
+        <!-- Search Input -->
+        <div class="input-field">
+            <input id="search-movie" type="text" placeholder="Search movies..." oninput="searchMovies()">
+        </div>
+
+        <!-- Category Filter -->
+        <div class="input-field">
+            <select id="category-filter" onchange="filterByCategory()">
+                <option value="" disabled selected>Filter by Category</option>
+                <option value="Action">Action</option>
+                <option value="Comedy">Comedy</option>
+                <option value="Drama">Drama</option>
+            </select>
+            <label>Filter by Category</label>
+        </div>
+
+        <!-- Sort Options -->
+        <div class="input-field">
+            <select id="sort-options" onchange="sortMovies()">
+                <option value="" disabled selected>Sort by</option>
+                <option value="rating">Rating</option>
+                <option value="releaseDate">Release Date</option>
+            </select>
+            <label>Sort by</label>
+        </div>
+
+        <h5>My Watchlist</h5>
+        <ul id="movie-list" class="collection">
+            <!-- Movies will be added here dynamically -->
+        </ul>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('select');
+            M.FormSelect.init(elems);
+        });
+    </script>
+</body>
+</html>
